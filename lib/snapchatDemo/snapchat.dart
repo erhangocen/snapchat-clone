@@ -69,6 +69,9 @@ class _SnapChatDemoState extends State<SnapChatDemo> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        
+      },child: const Icon(Icons.question_answer, color: Colors.white,)),
       body: ListView.builder(
         itemCount: users.length,
         itemBuilder: ((context, index) {

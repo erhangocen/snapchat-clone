@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(backgroundColor: Colors.lightBlue),
         iconTheme: const IconThemeData(color: Colors.white),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
