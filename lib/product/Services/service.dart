@@ -1,6 +1,6 @@
-import 'package:snapchat_clone/snapchatDemo/user.dart';
+import 'package:snapchat_clone/product/Models/user.dart';
 
-import '../core/defaultPhotos.dart';
+import '../../core/defaultPhotos.dart';
 
 List<User> users = [
   User(nickName: "Eren Birk", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 15, stPoint: 105),
@@ -13,14 +13,14 @@ List<User> users = [
   User(nickName: "Irmak", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 35, stPoint: 13),
   User(nickName: "Mehmet", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Şeyma", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
-  User(nickName: "Tarık", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
+  User(nickName: "Tarik", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Esra", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Melek", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Murat", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Ahmet", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Mehmet", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Şeyma", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
-  User(nickName: "Tarık", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
+  User(nickName: "Tarik", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Esra", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Melek", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
   User(nickName: "Murat", imagePath: DefaultPhotoPaths.defaultPp, lastSeenMinute: 5, stPoint: 36),
