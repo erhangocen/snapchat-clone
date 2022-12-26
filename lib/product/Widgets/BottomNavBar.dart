@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:snapchat_clone/product/ProjectConsts/BottomNavBarItems.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({Key? key, required this.index,required this.onPressed}) : super(key: key);
+
+  final int index;
+  final ValueSetter<int> onPressed;
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -10,7 +13,21 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
 
-  int index = 1;
+  late int index;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    index = widget.index;
+  }
+  
+  @override
+  void didUpdateWidget(covariant BottomNavBar oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    index = widget.index;
+  }
 
   void _navBarOnTap(int value){
     setState(() {
@@ -21,7 +38,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-        onTap: _navBarOnTap,
+        onTap: widget.onPressed,
         currentIndex: index,
         backgroundColor: Colors.transparent,
         items: BottomNavBarItems.bottomNavigationBarItems

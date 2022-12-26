@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:snapchat_clone/product/ProjectConsts/ConstEdgeInsets.dart';
+import 'package:snapchat_clone/product/ProjectConsts/Styles.dart';
 import 'package:snapchat_clone/product/Services/service.dart';
 import 'package:snapchat_clone/product/Models/user.dart';
 import 'package:snapchat_clone/product/Widgets/CameraButton.dart';
@@ -23,19 +25,14 @@ class _ChatViewState extends State<ChatView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: const _NewChatButton(),
-      body: ListView.builder(
-        itemCount: users.length,
-        itemBuilder: ((context, index) {
-          return Column(
-            children: [
-              _UserListItem(user: users[index]),
-              const _Space()
-            ],
-          );
-        })
-      )
-    );
+        floatingActionButton: const _NewChatButton(),
+        body: ListView.builder(
+            itemCount: users.length,
+            itemBuilder: ((context, index) {
+              return Column(
+                children: [_UserListItem(user: users[index]), const _Space()],
+              );
+            })));
   }
 }
 
@@ -66,11 +63,10 @@ class _UserListItem extends StatelessWidget {
     return TextButton(
       onPressed: () {},
       child: ListTile(
-        leading: PpButton(ppPath: user.imagePath),
-        title: Text(user.nickName),
-        subtitle: _UserListTileSubtitle(user: user),
-        trailing: const CameraButton()
-      ),
+          leading: PpButton(ppPath: user.imagePath),
+          title: Text(user.nickName),
+          subtitle: _UserListTileSubtitle(user: user),
+          trailing: const CameraButton()),
     );
   }
 }
@@ -86,24 +82,65 @@ class _UserListTileSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+      const _SnapStatus(),
+      _LastSnapTime(user: user),
+      _SnapPoint(user: user)
+    ]);
+  }
+}
+
+class _SnapPoint extends StatelessWidget {
+  const _SnapPoint({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "${user.stPoint}🔥",
+      style: Styles.shinyTextStyle,
+    );
+  }
+}
+
+class _LastSnapTime extends StatelessWidget {
+  const _LastSnapTime({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: ConstEdgeInsets.chatListTileSubtitlePadding,
+      child: Text(" • ${user.lastSeenMinute.toString()}m • "),
+    );
+  }
+}
+
+class _SnapStatus extends StatelessWidget {
+  const _SnapStatus({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
       const Icon(
         Icons.square_rounded,
         size: 15,
         color: Colors.red,
       ),
-      const Text(
+      Text(
         " New Snap",
-        style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+        style: Styles.redBoldTextStyle,
         textScaleFactor: 1.05,
       ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Text(" • ${user.lastSeenMinute.toString()}m • "),
-      ),
-      Text(
-        "${user.stPoint}🔥",
-        style: const TextStyle(color: Colors.white),
-      )
     ]);
   }
 }
@@ -120,7 +157,6 @@ class _NewChatButton extends StatelessWidget {
         child: const Icon(
           Icons.question_answer,
           color: Colors.white,
-        )
-    );
+        ));
   }
 }

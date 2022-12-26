@@ -46,6 +46,8 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               type: BottomNavigationBarType.fixed,
               selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+              showSelectedLabels: false,
+              showUnselectedLabels: false
             ),
             scaffoldBackgroundColor: backgroundColor),
         home: const SnapChatClone(),
