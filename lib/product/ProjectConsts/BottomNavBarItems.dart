@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:snapchat_clone/product/ProjectConsts/ConstTexts.dart';
 
 class BottomNavBarItems {
   static List<BottomNavigationBarItem> bottomNavigationBarItems = [
-    const BottomNavigationBarItem(icon: Icon(Icons.location_on_outlined), label: "Location", tooltip: "ss"),
-    const BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline_rounded), label: "Chat"),
-    const BottomNavigationBarItem(icon: Icon(Icons.camera_alt_outlined), label: "Camera"),
-    const BottomNavigationBarItem(icon: Icon(Icons.group_outlined), label: "Stories"),
-    const BottomNavigationBarItem(icon: Icon(Icons.menu_rounded), label: "Discover"),
+    BottomNavigationBarItem(icon: const Icon(Icons.location_on_outlined), label: ConstTexts.location),
+    BottomNavigationBarItem(icon: const Icon(Icons.chat_bubble_outline_rounded), label: ConstTexts.chat),
+    BottomNavigationBarItem(icon: const Icon(Icons.camera_alt_outlined), label: ConstTexts.camera),
+    BottomNavigationBarItem(icon: const Icon(Icons.group_outlined), label: ConstTexts.stories),
+    BottomNavigationBarItem(icon: const Icon(Icons.menu_rounded), label: ConstTexts.discover),
   ];
 
   
