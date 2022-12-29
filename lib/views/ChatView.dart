@@ -4,7 +4,9 @@ import 'package:snapchat_clone/product/ProjectConsts/Styles.dart';
 import 'package:snapchat_clone/product/Services/service.dart';
 import 'package:snapchat_clone/product/Models/user.dart';
 import 'package:snapchat_clone/product/Widgets/CameraButton.dart';
+import '../product/Models/friend.dart';
 import '../product/Widgets/PpButton.dart';
+
 
 class ChatView extends StatefulWidget {
   const ChatView({Key? key}) : super(key: key);
@@ -14,12 +16,12 @@ class ChatView extends StatefulWidget {
 }
 
 class _ChatViewState extends State<ChatView> {
-  late List<User> users;
+  late List<Friend> firends;
 
   @override
   void initState() {
     super.initState();
-    users = UserOperations.getAllUser();
+    firends = UserOperations.getAllFriends();
   }
 
   @override
@@ -27,10 +29,10 @@ class _ChatViewState extends State<ChatView> {
     return Scaffold(
         floatingActionButton: const _NewChatButton(),
         body: ListView.builder(
-            itemCount: users.length,
+            itemCount: firends.length,
             itemBuilder: ((context, index) {
               return Column(
-                children: [_UserListItem(user: users[index]), const _Space()],
+                children: [_UserListItem(user: firends[index]), const _Space()],
               );
             })));
   }
@@ -56,14 +58,14 @@ class _UserListItem extends StatelessWidget {
     required this.user,
   }) : super(key: key);
 
-  final User user;
+  final Friend user;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {},
       child: ListTile(
-          leading: PpButton(ppPath: user.imagePath),
+          leading: PpButton(user: user),
           title: Text(user.nickName),
           subtitle: _UserListTileSubtitle(user: user),
           trailing: const CameraButton()),
@@ -77,7 +79,7 @@ class _UserListTileSubtitle extends StatelessWidget {
     required this.user,
   }) : super(key: key);
 
-  final User user;
+  final Friend user;
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +97,7 @@ class _SnapPoint extends StatelessWidget {
     required this.user,
   }) : super(key: key);
 
-  final User user;
+  final Friend user;
 
   @override
   Widget build(BuildContext context) {

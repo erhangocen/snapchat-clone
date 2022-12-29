@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
-import 'package:snapchat_clone/core/defaultPhotos.dart';
 import 'package:snapchat_clone/product/ProjectConsts/BottomNavBarItems.dart';
+import 'package:snapchat_clone/product/Services/service.dart';
 import 'package:snapchat_clone/views/ChatView.dart';
 
+import '../product/Models/user.dart';
 import '../product/ProjectConsts/constTexts.dart';
 import '../product/Widgets/BottomNavBar.dart';
 import '../product/Widgets/PpButton.dart';
@@ -19,6 +21,14 @@ class SnapChatClone extends StatefulWidget {
 class _SnapChatCloneState extends State<SnapChatClone> {
 
   int index = 1;
+  late User currentUser;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    currentUser = UserOperations.getCurrentUser();
+  }
 
   void deneme(int deneme){
     setState(() {
@@ -29,13 +39,13 @@ class _SnapChatCloneState extends State<SnapChatClone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: chatViewAppBar(DefaultPhotoPaths.defaultPp, ConstTexts.chat),
+      appBar: chatViewAppBar(currentUser, ConstTexts.chat),
       bottomNavigationBar: BottomNavBar(index: index, onPressed: deneme),
       body: const ChatView()
     );
   }
 
-  AppBar chatViewAppBar(String ppPath, String title) {
+  AppBar chatViewAppBar(User user, String title) {
     return AppBar(
       title: Text(BottomNavBarItems.bottomNavigationBarItems[index].label.toString()),
       leadingWidth: 150,
@@ -45,7 +55,7 @@ class _SnapChatCloneState extends State<SnapChatClone> {
         mainAxisSize: MainAxisSize.max,
         children: [
           TabBarTextButton(
-          textbutton: PpButton(ppPath: ppPath,)
+          textbutton: PpButton(user: user,)
         ),
         const TabBarTextButton(
           textbutton: SearchButton()
