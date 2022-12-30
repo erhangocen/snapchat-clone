@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../product/Models/user.dart';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({Key? key, required this.user}) : super(key: key);
+class MessageView extends StatelessWidget {
+  const MessageView({Key? key, required this.user}) : super(key: key);
 
   final User user;
 
@@ -11,10 +11,10 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile View'),
+        title: Text(user.nickName),
       ),
       body: Center(
-        child: Text("${user.nickName} Profile"),
+        child: Text("${user.nickName} Message Page"),
       ),
     );
   }

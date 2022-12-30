@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:snapchat_clone/product/ProjectConsts/BottomNavBarItems.dart';
+import 'package:snapchat_clone/product/ProjectConsts/BottomAppBarItems.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key, required this.index,required this.onPressed}) : super(key: key);
+  const BottomNavBar({Key? key, required this.index, required this.tabController,}) : super(key: key);
 
   final int index;
-  final ValueSetter<int> onPressed;
+  final TabController tabController;
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -14,11 +14,12 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
 
   late int index;
+  late final TabController _tabController;
 
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
+    super.initState(); 
     index = widget.index;
   }
   
@@ -37,11 +38,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-        onTap: widget.onPressed,
-        currentIndex: index,
-        backgroundColor: Colors.transparent,
-        items: BottomNavBarItems.bottomNavigationBarItems
+    return BottomAppBar(
+      color: Colors.transparent,
+      child: TabBar(
+        controller: widget.tabController,
+        indicatorSize: TabBarIndicatorSize.label,
+        tabs: BottomAppBarItems.tabs
+      ),
       );
   }
 }

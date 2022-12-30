@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:snapchat_clone/product/ProjectConsts/ConstEdgeInsets.dart';
 import 'package:snapchat_clone/product/ProjectConsts/Styles.dart';
+import 'package:snapchat_clone/product/Services/navigation.dart';
 import 'package:snapchat_clone/product/Services/service.dart';
 import 'package:snapchat_clone/product/Models/user.dart';
 import 'package:snapchat_clone/product/Widgets/CameraButton.dart';
+import 'package:snapchat_clone/views/MessageView.dart';
 import '../product/Models/friend.dart';
 import '../product/Widgets/PpButton.dart';
 
 
-class ChatView extends StatefulWidget {
-  const ChatView({Key? key}) : super(key: key);
+class ChatListView extends StatefulWidget {
+  const ChatListView({Key? key}) : super(key: key);
 
   @override
-  State<ChatView> createState() => _ChatViewState();
+  State<ChatListView> createState() => _ChatListViewState();
 }
 
-class _ChatViewState extends State<ChatView> {
+class _ChatListViewState extends State<ChatListView> {
   late List<Friend> firends;
 
   @override
@@ -52,7 +54,7 @@ class _Space extends StatelessWidget {
   }
 }
 
-class _UserListItem extends StatelessWidget {
+class _UserListItem extends StatelessWidget with NavigatorManager{
   const _UserListItem({
     Key? key,
     required this.user,
@@ -63,12 +65,15 @@ class _UserListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        navigateToWidget(context, MessageView(user: user));
+      },
       child: ListTile(
           leading: PpButton(user: user),
           title: Text(user.nickName),
           subtitle: _UserListTileSubtitle(user: user),
-          trailing: const CameraButton()),
+          trailing: const CameraButton()
+        ),
     );
   }
 }

@@ -1,0 +1,1 @@
+enum Sections {Location, Chat, Camera, Stories, Discover}
