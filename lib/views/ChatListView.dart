@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:snapchat_clone/product/ProjectConsts/ConstEdgeInsets.dart';
 import 'package:snapchat_clone/product/ProjectConsts/Styles.dart';
-import 'package:snapchat_clone/product/Services/navigation.dart';
 import 'package:snapchat_clone/product/Services/service.dart';
 import 'package:snapchat_clone/product/Models/user.dart';
 import 'package:snapchat_clone/product/Widgets/CameraButton.dart';
 import 'package:snapchat_clone/views/MessageView.dart';
+import '../core/navigation.dart';
 import '../product/Models/friend.dart';
 import '../product/Widgets/PpButton.dart';
 
@@ -34,7 +34,10 @@ class _ChatListViewState extends State<ChatListView> {
             itemCount: firends.length,
             itemBuilder: ((context, index) {
               return Column(
-                children: [_UserListItem(user: firends[index]), const _Space()],
+                children: [
+                  _UserListItem(user: firends[index]), 
+                  const _Space()
+                  ],
               );
             })));
   }
@@ -47,7 +50,7 @@ class _Space extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const Divider(
       color: Colors.white10,
       height: 0.7,
     );

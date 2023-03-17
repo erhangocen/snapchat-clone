@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:snapchat_clone/product/Services/navigation.dart';
 import '../../Views/ProfileView.dart';
+import '../../core/navigation.dart';
 import '../Models/user.dart';
 
 class PpButton extends StatelessWidget with NavigatorManager{
